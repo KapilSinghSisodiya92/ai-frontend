@@ -1,36 +1,92 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+AI Canvas Architect Frontend 🎨⚡
 
-## Getting Started
+A state-of-the-art Generative UI Mockup Canvas built with Next.js, React, Tailwind CSS, and the modern Vercel AI SDK v6.
 
-First, run the development server:
+This application bridges the gap between natural language prompts and functional software mockups. Instead of conversing via standard chat bubbles, users describe interfaces, and an LLM streams dynamic schema blueprints to the client. The frontend parses this data structure in real-time, mapping structured JSON blocks directly into interactive, beautifully styled Tailwind components on an adjacent designer canvas.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+🚀 Core Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Generative UI Engine: Instantly translates unstructured user prompts into highly-visual interface components.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Vercel AI SDK v6 Integration: Leverages the robust Next.js server-side streaming helpers (toUIMessageStreamResponse) and client-side modern UI hooks (useChat).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Real-Time Chunk Parsing: Securely cleans and parses partial streaming JSON strings on stream finalization without triggering synchronous render cascades or freezing the main thread.
 
-## Learn More
+Component Preview: Maps JSON layouts onto a designer canvas, rendering real headers, input forms, and dynamic action buttons depending on structural parameters.
 
-To learn more about Next.js, take a look at the following resources:
+Sleek Developer UI: Built with custom Tailwind CSS dark layouts, Lucide icons, and responsive layouts.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+🛠️ Tech Stack & Ecosystem
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Frontend Framework: Next.js 15+ (App Router)
 
-## Deploy on Vercel
+Language: TypeScript
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Styling: Tailwind CSS (Fluid responsive layouts)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+AI SDK: Vercel AI SDK v6 (ai, @ai-sdk/react)
+
+Core Model: OpenAI GPT-4o-mini (@ai-sdk/openai)
+
+Icons: Lucide React
+
+⚙️ Architecture & Data Protocol
+
+When a user clicks "Architect Interface", a modular data transformation sequence occurs:
+
+[Prompt Input] ──► [Next.js API Route (/api/chat)] ──► [OpenAI Stream]
+                          │                                     │
+                          ▼                                     ▼
+                 convertToModelMessages()              result.toUIMessageStreamResponse()
+                          │                                     │
+[Render Preview] ◄── [JSON Parse & Component Map] ◄── [onFinish Client Event]
+
+
+
+Supported Component Schema
+
+The AI is instructed to reply with a strict JSON format matching:
+
+{
+  "layoutTitle": "Registration Form",
+  "components": [
+    { "type": "heading", "label": "Create an Account" },
+    { "type": "input", "label": "Full Name" },
+    { "type": "button", "label": "Register Now", "color": "indigo" }
+  ]
+}
+
+
+🏁 Setup & Installation
+
+1. Navigate to Workspace
+
+cd ai-frontend
+
+
+2. Install Dependencies
+
+npm install
+
+
+3. Environment Configuration
+
+Create a .env.local file in the root folder of ai-frontend:
+
+OPENAI_API_KEY=your-actual-api-key-here
+
+
+4. Launch Development Environment
+
+Run the local next server:
+
+npx next dev
+
+
+Open your browser to http://localhost:3000 to interact with the mockup canvas!
+
+📝 Example Layout Prompt
+
+Give this design description a try inside the canvas interface:
+
+"Create a login portal with a heading that says Welcome Back, an input field for Username, an input field for Secure Token, and a green button that says Gain Access."
