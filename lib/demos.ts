@@ -4,6 +4,7 @@ import {
   Wand2,
   ShieldCheck,
   MessageCircle,
+  ImageIcon,
   type LucideIcon,
 } from "lucide-react";
 
@@ -14,7 +15,7 @@ export type Demo = {
   description: string;
   hint: string;
   icon: LucideIcon;
-  accent: "amber" | "blue" | "violet" | "emerald" | "rose";
+  accent: "amber" | "blue" | "violet" | "emerald" | "rose" | "cyan";
   tags: string[];
 };
 
@@ -62,6 +63,17 @@ export const demos: Demo[] = [
     icon: MessageCircle,
     accent: "rose",
     tags: ["useChat", "Widget", "Layout"],
+  },
+  {
+    href: "/alt-text",
+    title: "AI Alt-Text Generator",
+    episode: "Series A · Ep 5",
+    description:
+      "Drop an image and get WCAG-compliant alt text instantly. Vision model returns alt text, description, detected objects, and decorative flag.",
+    hint: "Drop any photo — product shot, screenshot, or illustration",
+    icon: ImageIcon,
+    accent: "cyan",
+    tags: ["Vision", "generateObject", "a11y"],
   },
   {
     href: "/canvas",
@@ -113,6 +125,13 @@ export const accentStyles: Record<
     text: "text-rose-400",
     glow: "group-hover:shadow-rose-500/10",
     iconBg: "bg-rose-500/10",
+  },
+  cyan: {
+    border: "border-cyan-500/20 hover:border-cyan-500/40",
+    bg: "bg-cyan-500/5",
+    text: "text-cyan-400",
+    glow: "group-hover:shadow-cyan-500/10",
+    iconBg: "bg-cyan-500/10",
   },
 };
 
