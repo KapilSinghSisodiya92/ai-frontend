@@ -3,6 +3,7 @@ import {
   Search,
   Wand2,
   ShieldCheck,
+  MessageCircle,
   type LucideIcon,
 } from "lucide-react";
 
@@ -13,7 +14,7 @@ export type Demo = {
   description: string;
   hint: string;
   icon: LucideIcon;
-  accent: "amber" | "blue" | "violet" | "emerald";
+  accent: "amber" | "blue" | "violet" | "emerald" | "rose";
   tags: string[];
 };
 
@@ -50,6 +51,17 @@ export const demos: Demo[] = [
     icon: ShieldCheck,
     accent: "emerald",
     tags: ["Zod", "generateObject", "onBlur"],
+  },
+  {
+    href: "/chat",
+    title: "Chat Widget",
+    episode: "Series A · Ep 4",
+    description:
+      "A floating assistant on every page. One hook, one API route, one component — dropped into your root layout.",
+    hint: "Click the blue button in the bottom-right corner",
+    icon: MessageCircle,
+    accent: "rose",
+    tags: ["useChat", "Widget", "Layout"],
   },
   {
     href: "/canvas",
@@ -94,6 +106,13 @@ export const accentStyles: Record<
     text: "text-amber-400",
     glow: "group-hover:shadow-amber-500/10",
     iconBg: "bg-amber-500/10",
+  },
+  rose: {
+    border: "border-rose-500/20 hover:border-rose-500/40",
+    bg: "bg-rose-500/5",
+    text: "text-rose-400",
+    glow: "group-hover:shadow-rose-500/10",
+    iconBg: "bg-rose-500/10",
   },
 };
 

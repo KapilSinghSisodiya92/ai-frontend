@@ -1,6 +1,7 @@
 'use client';
 
 import { useChat } from '@ai-sdk/react';
+import { DefaultChatTransport } from 'ai';
 import { useState } from 'react';
 import Link from 'next/link';
 import { Sparkles, ArrowLeft } from 'lucide-react';
@@ -10,6 +11,7 @@ export default function CanvasPage() {
   const [parsedLayout, setParsedLayout] = useState<{ layoutTitle: string; components: { type: string; label: string; color: string }[] } | null>(null);
 
   const { sendMessage, status } = useChat({
+    transport: new DefaultChatTransport({ api: '/api/canvas' }),
     onFinish: (message) => {
       try {
         const cleanText = message?.message?.parts
