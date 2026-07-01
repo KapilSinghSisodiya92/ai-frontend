@@ -14,6 +14,7 @@ Available demos:
 - AI Text Rewriter (/rewrite) — Cmd+Shift+R to rewrite selected text with AI
 - AI Code Reviewer (/review) — structured code review with severity, issues, and refactored code
 - Ask This Page (/ask) — RAG over any URL: ingest, embed chunks, ask questions
+- AI Landing Page Generator (/generate-page) — describe a product, stream JSX landing page with live preview
 - AI Canvas Architect (/canvas) — describe a UI in plain English and see it render live
 
 Stack: Next.js 15, TypeScript, Tailwind CSS, Vercel AI SDK v6, OpenAI.

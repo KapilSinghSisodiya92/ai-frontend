@@ -8,25 +8,60 @@ import {
   Keyboard,
   Globe,
   Code2,
+  LayoutTemplate,
   type LucideIcon,
 } from "lucide-react";
 
+export type DemoSeries = "A" | "B";
+
+export type DemoAccent =
+  | "amber"
+  | "blue"
+  | "violet"
+  | "emerald"
+  | "rose"
+  | "cyan"
+  | "indigo"
+  | "teal"
+  | "orange"
+  | "fuchsia";
+
 export type Demo = {
+  series: DemoSeries;
   href: string;
   title: string;
   episode?: string;
   description: string;
   hint: string;
   icon: LucideIcon;
-  accent: "amber" | "blue" | "violet" | "emerald" | "rose" | "cyan" | "indigo" | "teal" | "orange";
+  accent: DemoAccent;
   tags: string[];
+};
+
+export const seriesInfo: Record<
+  DemoSeries,
+  { label: string; title: string; description: string }
+> = {
+  A: {
+    label: "Series A",
+    title: "AI primitives in React",
+    description:
+      "Drop-in AI features — search, autocomplete, validation, chat, and more. One hook, one route, one component.",
+  },
+  B: {
+    label: "Series B",
+    title: "Generative UI & builders",
+    description:
+      "AI that builds interfaces — landing pages, components, and full layouts streamed as real JSX you can ship.",
+  },
 };
 
 export const demos: Demo[] = [
   {
+    series: "A",
     href: "/search",
     title: "AI Semantic Search",
-    episode: "Series A · Ep 1",
+    episode: "Ep 1",
     description:
       "Search by meaning, not keywords. Embeds your query with OpenAI, scores against pre-embedded articles with cosine similarity.",
     hint: 'Try: "how components remember things"',
@@ -35,9 +70,10 @@ export const demos: Demo[] = [
     tags: ["Embeddings", "API Route", "Debounce"],
   },
   {
+    series: "A",
     href: "/complete",
     title: "Streaming Autocomplete",
-    episode: "Series A · Ep 2",
+    episode: "Ep 2",
     description:
       "Ghost-text suggestions as you type. Tab to request, Tab again to accept — powered by useCompletion and streamText.",
     hint: 'Try: "React hooks let you"',
@@ -46,9 +82,10 @@ export const demos: Demo[] = [
     tags: ["useCompletion", "Ghost Text", "Streaming"],
   },
   {
+    series: "A",
     href: "/validate",
     title: "AI Form Validation",
-    episode: "Series A · Ep 3",
+    episode: "Ep 3",
     description:
       "Two-pass validation: Zod for instant syntax checks, AI for semantic meaning on blur — company names and job titles.",
     hint: 'Try: "pizza for lunch" as company name',
@@ -57,9 +94,10 @@ export const demos: Demo[] = [
     tags: ["Zod", "generateObject", "onBlur"],
   },
   {
+    series: "A",
     href: "/chat",
     title: "Chat Widget",
-    episode: "Series A · Ep 4",
+    episode: "Ep 4",
     description:
       "A floating assistant on every page. One hook, one API route, one component — dropped into your root layout.",
     hint: "Click the blue button in the bottom-right corner",
@@ -68,9 +106,10 @@ export const demos: Demo[] = [
     tags: ["useChat", "Widget", "Layout"],
   },
   {
+    series: "A",
     href: "/alt-text",
     title: "AI Alt-Text Generator",
-    episode: "Series A · Ep 5",
+    episode: "Ep 5",
     description:
       "Drop an image and get WCAG-compliant alt text instantly. Vision model returns alt text, description, detected objects, and decorative flag.",
     hint: "Drop any photo — product shot, screenshot, or illustration",
@@ -79,9 +118,10 @@ export const demos: Demo[] = [
     tags: ["Vision", "generateObject", "a11y"],
   },
   {
+    series: "A",
     href: "/rewrite",
     title: "AI Text Rewriter",
-    episode: "Series A · Ep 6",
+    episode: "Ep 6",
     description:
       "Select text anywhere and hit Cmd+Shift+R. A popover offers four rewrite modes — the selection updates in place as the stream completes.",
     hint: "Select a sentence in the draft below, then press ⌘⇧R",
@@ -90,9 +130,10 @@ export const demos: Demo[] = [
     tags: ["useCompletion", "Range API", "Shortcut"],
   },
   {
+    series: "A",
     href: "/review",
     title: "AI Code Reviewer",
-    episode: "Series A · Ep 7",
+    episode: "Ep 7",
     description:
       "Paste a function and get a structured review — severity score, line-referenced issues, and refactored code via generateObject.",
     hint: "Hit Review on the sample code — SQL injection and XSS included",
@@ -101,9 +142,10 @@ export const demos: Demo[] = [
     tags: ["generateObject", "Zod", "Structured"],
   },
   {
+    series: "A",
     href: "/ask",
     title: "Ask This Page",
-    episode: "Series A · Ep 8",
+    episode: "Ep 8",
     description:
       "Paste a URL, ingest the page server-side, embed chunks, and ask questions with cited answers — RAG without a database.",
     hint: "Try https://nextjs.org/docs then ask about App Router",
@@ -112,6 +154,7 @@ export const demos: Demo[] = [
     tags: ["RAG", "Embeddings", "streamText"],
   },
   {
+    series: "A",
     href: "/canvas",
     title: "AI Canvas Architect",
     description:
@@ -121,10 +164,22 @@ export const demos: Demo[] = [
     accent: "amber",
     tags: ["useChat", "Generative UI", "Streaming"],
   },
+  {
+    series: "B",
+    href: "/generate-page",
+    title: "AI Landing Page Generator",
+    episode: "Ep 1",
+    description:
+      "Describe a product and generate a full landing page scaffold — hero, features, pricing, and more as streaming JSX with live preview.",
+    hint: 'Try: "A SaaS tool for freelance designers to manage client feedback"',
+    icon: LayoutTemplate,
+    accent: "fuchsia",
+    tags: ["streamText", "iframe srcdoc", "highlight.js"],
+  },
 ];
 
 export const accentStyles: Record<
-  Demo["accent"],
+  DemoAccent,
   { border: string; bg: string; text: string; glow: string; iconBg: string }
 > = {
   blue: {
@@ -190,8 +245,24 @@ export const accentStyles: Record<
     glow: "group-hover:shadow-orange-500/10",
     iconBg: "bg-orange-500/10",
   },
+  fuchsia: {
+    border: "border-fuchsia-500/20 hover:border-fuchsia-500/40",
+    bg: "bg-fuchsia-500/5",
+    text: "text-fuchsia-400",
+    glow: "group-hover:shadow-fuchsia-500/10",
+    iconBg: "bg-fuchsia-500/10",
+  },
 };
 
 export function getDemoByHref(href: string): Demo | undefined {
   return demos.find((d) => d.href === href);
+}
+
+export function getDemosBySeries(series: DemoSeries): Demo[] {
+  return demos.filter((d) => d.series === series);
+}
+
+export function formatEpisode(demo: Demo): string | undefined {
+  if (!demo.episode) return undefined;
+  return `Series ${demo.series} · ${demo.episode}`;
 }
