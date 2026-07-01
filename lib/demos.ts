@@ -5,6 +5,7 @@ import {
   ShieldCheck,
   MessageCircle,
   ImageIcon,
+  Keyboard,
   type LucideIcon,
 } from "lucide-react";
 
@@ -15,7 +16,7 @@ export type Demo = {
   description: string;
   hint: string;
   icon: LucideIcon;
-  accent: "amber" | "blue" | "violet" | "emerald" | "rose" | "cyan";
+  accent: "amber" | "blue" | "violet" | "emerald" | "rose" | "cyan" | "indigo";
   tags: string[];
 };
 
@@ -76,6 +77,17 @@ export const demos: Demo[] = [
     tags: ["Vision", "generateObject", "a11y"],
   },
   {
+    href: "/rewrite",
+    title: "AI Text Rewriter",
+    episode: "Series A · Ep 6",
+    description:
+      "Select text anywhere and hit Cmd+Shift+R. A popover offers four rewrite modes — the selection updates in place as the stream completes.",
+    hint: "Select a sentence in the draft below, then press ⌘⇧R",
+    icon: Keyboard,
+    accent: "indigo",
+    tags: ["useCompletion", "Range API", "Shortcut"],
+  },
+  {
     href: "/canvas",
     title: "AI Canvas Architect",
     description:
@@ -132,6 +144,13 @@ export const accentStyles: Record<
     text: "text-cyan-400",
     glow: "group-hover:shadow-cyan-500/10",
     iconBg: "bg-cyan-500/10",
+  },
+  indigo: {
+    border: "border-indigo-500/20 hover:border-indigo-500/40",
+    bg: "bg-indigo-500/5",
+    text: "text-indigo-400",
+    glow: "group-hover:shadow-indigo-500/10",
+    iconBg: "bg-indigo-500/10",
   },
 };
 
