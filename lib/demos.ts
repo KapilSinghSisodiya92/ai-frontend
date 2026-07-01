@@ -12,6 +12,7 @@ import {
   Boxes,
   Palette,
   FileUser,
+  Mic,
   type LucideIcon,
 } from "lucide-react";
 
@@ -214,6 +215,18 @@ export const demos: Demo[] = [
     icon: FileUser,
     accent: "fuchsia",
     tags: ["pdf-parse", "FormData", "generateObject"],
+  },
+  {
+    series: "B",
+    href: "/voice",
+    title: "Voice-to-Tailwind",
+    episode: "Ep 6",
+    description:
+      "Hold spacebar and describe a UI component. Whisper transcribes your voice, GPT streams JSX back, and a live iframe preview renders it.",
+    hint: "Press & hold Space to record, release to stop — then describe your UI out loud",
+    icon: Mic,
+    accent: "fuchsia",
+    tags: ["MediaRecorder", "Whisper", "streamText"],
   },
 ];
 

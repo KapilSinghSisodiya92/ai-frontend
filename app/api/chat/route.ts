@@ -18,6 +18,7 @@ Available demos:
 - AI Component Builder (/builder) — drag-and-drop canvas with AI-generated components
 - AI Colour Palette (/palette) — brand description to full Tailwind colour system with live preview
 - Resume Screener (/screen) — upload PDF resume, get structured candidate profile with fit score
+- Voice-to-Tailwind (/voice) — hold spacebar, speak a UI description, Whisper transcribes, JSX streams and renders live
 - AI Canvas Architect (/canvas) — describe a UI in plain English and see it render live
 
 Stack: Next.js 15, TypeScript, Tailwind CSS, Vercel AI SDK v6, OpenAI.
