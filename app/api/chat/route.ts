@@ -12,6 +12,7 @@ Available demos:
 - AI Form Validation (/validate) — Zod syntax checks plus AI semantic validation
 - AI Alt-Text Generator (/alt-text) — WCAG-compliant alt text from image uploads via vision
 - AI Text Rewriter (/rewrite) — Cmd+Shift+R to rewrite selected text with AI
+- AI Code Reviewer (/review) — structured code review with severity, issues, and refactored code
 - Ask This Page (/ask) — RAG over any URL: ingest, embed chunks, ask questions
 - AI Canvas Architect (/canvas) — describe a UI in plain English and see it render live
 

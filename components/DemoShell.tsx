@@ -5,7 +5,7 @@ import { getDemoByHref } from "@/lib/demos";
 interface DemoShellProps {
   href: string;
   children: React.ReactNode;
-  maxWidth?: "md" | "lg" | "xl" | "2xl";
+  maxWidth?: "md" | "lg" | "xl" | "2xl" | "7xl";
 }
 
 const maxWidthClass = {
@@ -13,6 +13,7 @@ const maxWidthClass = {
   lg: "max-w-lg",
   xl: "max-w-xl",
   "2xl": "max-w-2xl",
+  "7xl": "max-w-7xl",
 };
 
 export function DemoShell({
