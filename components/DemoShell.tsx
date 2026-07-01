@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
-import { getDemoByHref } from "@/lib/demos";
+import { formatEpisode, getDemoByHref } from "@/lib/demos";
 
 interface DemoShellProps {
   href: string;
@@ -43,9 +43,9 @@ export function DemoShell({
               <Icon className="w-4 h-4 text-amber-400" />
             </div>
             <div className="min-w-0">
-              {demo.episode && (
+              {formatEpisode(demo) && (
                 <p className="text-[10px] uppercase tracking-widest text-gray-600 truncate">
-                  {demo.episode}
+                  {formatEpisode(demo)}
                 </p>
               )}
               <h1 className="text-sm font-semibold tracking-tight truncate">

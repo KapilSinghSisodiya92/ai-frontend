@@ -1,6 +1,50 @@
 import Link from "next/link";
-import { ArrowRight, Sparkles } from "lucide-react";
-import { accentStyles, demos } from "@/lib/demos";
+import { Sparkles } from "lucide-react";
+import { DemoCard } from "@/components/DemoCard";
+import { getDemosBySeries, seriesInfo } from "@/lib/demos";
+
+function SeriesSection({ series }: { series: "A" | "B" }) {
+  const info = seriesInfo[series];
+  const demos = getDemosBySeries(series);
+  const isSeriesB = series === "B";
+
+  return (
+    <section className="space-y-8">
+      <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 border-b border-gray-800 pb-6">
+        <div className="space-y-2">
+          <span
+            className={`inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-semibold uppercase tracking-widest border ${
+              isSeriesB
+                ? "bg-fuchsia-500/10 text-fuchsia-400 border-fuchsia-500/20"
+                : "bg-blue-500/10 text-blue-400 border-blue-500/20"
+            }`}
+          >
+            {info.label}
+          </span>
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">
+            {info.title}
+          </h2>
+          <p className="text-sm text-gray-400 max-w-2xl leading-relaxed">
+            {info.description}
+          </p>
+        </div>
+        <p className="text-xs text-gray-600 shrink-0">
+          {demos.length} demo{demos.length === 1 ? "" : "s"}
+        </p>
+      </div>
+
+      <div
+        className={`grid gap-5 grid-cols-1 md:grid-cols-2 ${
+          isSeriesB ? "xl:grid-cols-1 max-w-2xl" : "xl:grid-cols-3"
+        }`}
+      >
+        {demos.map((demo) => (
+          <DemoCard key={demo.href} demo={demo} />
+        ))}
+      </div>
+    </section>
+  );
+}
 
 export default function HomePage() {
   return (
@@ -8,11 +52,11 @@ export default function HomePage() {
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-blue-500/5 rounded-full blur-3xl" />
         <div className="absolute top-1/3 -right-32 w-[400px] h-[400px] bg-violet-500/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 -left-32 w-[400px] h-[400px] bg-amber-500/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 -left-32 w-[400px] h-[400px] bg-fuchsia-500/5 rounded-full blur-3xl" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 py-16 sm:py-24">
-        <header className="text-center mb-16 space-y-5">
+      <div className="relative max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 py-16 sm:py-24 space-y-20">
+        <header className="text-center space-y-5">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gray-900 border border-gray-800 text-xs text-gray-400">
             <Sparkles className="w-3.5 h-3.5 text-amber-400" />
             Next.js 15 · TypeScript · Vercel AI SDK v6
@@ -23,63 +67,15 @@ export default function HomePage() {
           </h1>
 
           <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            Interactive demos from the tutorial series. Each page is a
-            self-contained example you can explore, break, and learn from.
+            Two tutorial series, one repo. Series A adds AI primitives to your
+            app. Series B generates full UI from a prompt.
           </p>
         </header>
 
-        <div className="grid gap-5 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
-          {demos.map((demo) => {
-            const styles = accentStyles[demo.accent];
-            const Icon = demo.icon;
+        <SeriesSection series="A" />
+        <SeriesSection series="B" />
 
-            return (
-              <Link
-                key={demo.href}
-                href={demo.href}
-                className={`group relative flex flex-col rounded-2xl border bg-gray-900/50 p-6 transition-all duration-300 hover:bg-gray-900 hover:shadow-2xl ${styles.border} ${styles.glow}`}
-              >
-                <div className="flex items-start justify-between gap-4 mb-4">
-                  <div
-                    className={`p-2.5 rounded-xl ${styles.iconBg} border border-gray-800`}
-                  >
-                    <Icon className={`w-5 h-5 ${styles.text}`} />
-                  </div>
-                  <ArrowRight className="w-4 h-4 text-gray-600 group-hover:text-gray-400 group-hover:translate-x-0.5 transition-all shrink-0 mt-1" />
-                </div>
-
-                {demo.episode && (
-                  <span
-                    className={`text-[10px] font-medium uppercase tracking-widest ${styles.text} mb-1.5`}
-                  >
-                    {demo.episode}
-                  </span>
-                )}
-
-                <h2 className="text-lg font-semibold text-white mb-2 group-hover:text-white/90">
-                  {demo.title}
-                </h2>
-
-                <p className="text-sm text-gray-400 leading-relaxed flex-1 mb-4">
-                  {demo.description}
-                </p>
-
-                <div className="flex flex-wrap gap-1.5">
-                  {demo.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-2 py-0.5 rounded-md bg-gray-800/80 text-[10px] font-medium text-gray-500"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </Link>
-            );
-          })}
-        </div>
-
-        <p className="text-center text-xs text-gray-600 mt-12">
+        <p className="text-center text-xs text-gray-600 pt-4">
           Set{" "}
           <code className="px-1.5 py-0.5 rounded bg-gray-900 text-gray-500 font-mono">
             OPENAI_API_KEY
