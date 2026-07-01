@@ -35,7 +35,7 @@ function SeriesSection({ series }: { series: "A" | "B" }) {
 
       <div
         className={`grid gap-5 grid-cols-1 md:grid-cols-2 ${
-          isSeriesB ? "xl:grid-cols-1 max-w-2xl" : "xl:grid-cols-3"
+          isSeriesB ? "xl:grid-cols-2" : "xl:grid-cols-3"
         }`}
       >
         {demos.map((demo) => (

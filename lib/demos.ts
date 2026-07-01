@@ -9,6 +9,7 @@ import {
   Globe,
   Code2,
   LayoutTemplate,
+  Boxes,
   type LucideIcon,
 } from "lucide-react";
 
@@ -175,6 +176,18 @@ export const demos: Demo[] = [
     icon: LayoutTemplate,
     accent: "fuchsia",
     tags: ["streamText", "iframe srcdoc", "highlight.js"],
+  },
+  {
+    series: "B",
+    href: "/builder",
+    title: "AI Component Builder",
+    episode: "Ep 2",
+    description:
+      "Drag button, input, and card slots onto a canvas. Double-click to describe each one — AI generates typed JSX with props and accessibility notes.",
+    hint: 'Add a Button, double-click, try "blue submit with loading spinner"',
+    icon: Boxes,
+    accent: "fuchsia",
+    tags: ["generateObject", "Drag", "Export"],
   },
 ];
 
