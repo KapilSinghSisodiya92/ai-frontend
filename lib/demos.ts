@@ -10,6 +10,7 @@ import {
   Code2,
   LayoutTemplate,
   Boxes,
+  Palette,
   type LucideIcon,
 } from "lucide-react";
 
@@ -188,6 +189,18 @@ export const demos: Demo[] = [
     icon: Boxes,
     accent: "fuchsia",
     tags: ["generateObject", "Drag", "Export"],
+  },
+  {
+    series: "B",
+    href: "/palette",
+    title: "AI Colour Palette",
+    episode: "Ep 3",
+    description:
+      "Describe your brand in one sentence. Get a full Tailwind colour system with 9-shade scales and a live preview on buttons, badges, and forms.",
+    hint: 'Try: "A fintech startup — trustworthy, modern, approachable"',
+    icon: Palette,
+    accent: "fuchsia",
+    tags: ["generateObject", "CSS Variables", "Zod"],
   },
 ];
 
