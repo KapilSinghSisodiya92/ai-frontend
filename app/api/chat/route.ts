@@ -30,9 +30,11 @@ export async function POST(req: Request) {
 
     // In AI SDK v6, use toUIMessageStreamResponse() to cleanly stream rich message protocols
     return result.toUIMessageStreamResponse();
-  } catch (error: any) {
+  } catch (error: unknown) {
+    const errorMessage =
+      error instanceof Error ? error.message : "Unknown error";
     console.error("Error in API route:", error);
-    return new Response(JSON.stringify({ error: error.message }), {
+    return new Response(JSON.stringify({ error: errorMessage }), {
       status: 500,
       headers: { "Content-Type": "application/json" },
     });
