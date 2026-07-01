@@ -11,6 +11,7 @@ import {
   LayoutTemplate,
   Boxes,
   Palette,
+  FileUser,
   type LucideIcon,
 } from "lucide-react";
 
@@ -201,6 +202,18 @@ export const demos: Demo[] = [
     icon: Palette,
     accent: "fuchsia",
     tags: ["generateObject", "CSS Variables", "Zod"],
+  },
+  {
+    series: "B",
+    href: "/screen",
+    title: "Resume Screener",
+    episode: "Ep 4",
+    description:
+      "Upload a PDF resume and get a structured candidate profile — skills, fit score, remote preference, and salary in one API call.",
+    hint: "Drop a PDF resume and click Screen candidate",
+    icon: FileUser,
+    accent: "fuchsia",
+    tags: ["pdf-parse", "FormData", "generateObject"],
   },
 ];
 
