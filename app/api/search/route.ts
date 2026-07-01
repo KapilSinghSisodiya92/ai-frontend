@@ -1,14 +1,8 @@
 import { OpenAI } from "openai";
 import { articles } from "@/lib/search-data";
+import { cosineSimilarity } from "@/lib/cosine-similarity";
 
 const openai = new OpenAI();
-
-function cosineSimilarity(a: number[], b: number[]) {
-  const dot = a.reduce((sum, v, i) => sum + v * b[i], 0);
-  const normA = Math.sqrt(a.reduce((s, v) => s + v * v, 0));
-  const normB = Math.sqrt(b.reduce((s, v) => s + v * v, 0));
-  return dot / (normA * normB);
-}
 
 export async function POST(req: Request) {
   const { query } = await req.json();

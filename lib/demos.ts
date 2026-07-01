@@ -6,6 +6,7 @@ import {
   MessageCircle,
   ImageIcon,
   Keyboard,
+  Globe,
   type LucideIcon,
 } from "lucide-react";
 
@@ -16,7 +17,7 @@ export type Demo = {
   description: string;
   hint: string;
   icon: LucideIcon;
-  accent: "amber" | "blue" | "violet" | "emerald" | "rose" | "cyan" | "indigo";
+  accent: "amber" | "blue" | "violet" | "emerald" | "rose" | "cyan" | "indigo" | "teal";
   tags: string[];
 };
 
@@ -88,6 +89,17 @@ export const demos: Demo[] = [
     tags: ["useCompletion", "Range API", "Shortcut"],
   },
   {
+    href: "/ask",
+    title: "Ask This Page",
+    episode: "Series A · Ep 8",
+    description:
+      "Paste a URL, ingest the page server-side, embed chunks, and ask questions with cited answers — RAG without a database.",
+    hint: "Try https://nextjs.org/docs then ask about App Router",
+    icon: Globe,
+    accent: "teal",
+    tags: ["RAG", "Embeddings", "streamText"],
+  },
+  {
     href: "/canvas",
     title: "AI Canvas Architect",
     description:
@@ -151,6 +163,13 @@ export const accentStyles: Record<
     text: "text-indigo-400",
     glow: "group-hover:shadow-indigo-500/10",
     iconBg: "bg-indigo-500/10",
+  },
+  teal: {
+    border: "border-teal-500/20 hover:border-teal-500/40",
+    bg: "bg-teal-500/5",
+    text: "text-teal-400",
+    glow: "group-hover:shadow-teal-500/10",
+    iconBg: "bg-teal-500/10",
   },
 };
 
