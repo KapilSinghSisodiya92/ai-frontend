@@ -11,7 +11,7 @@ export default function HomePage() {
         <div className="absolute bottom-0 -left-32 w-[400px] h-[400px] bg-amber-500/5 rounded-full blur-3xl" />
       </div>
 
-      <div className="relative max-w-4xl mx-auto px-6 py-16 sm:py-24">
+      <div className="relative max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 py-16 sm:py-24">
         <header className="text-center mb-16 space-y-5">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gray-900 border border-gray-800 text-xs text-gray-400">
             <Sparkles className="w-3.5 h-3.5 text-amber-400" />
@@ -22,13 +22,13 @@ export default function HomePage() {
             AI Frontend Playground
           </h1>
 
-          <p className="text-gray-400 text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
+          <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
             Interactive demos from the tutorial series. Each page is a
             self-contained example you can explore, break, and learn from.
           </p>
         </header>
 
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="grid gap-5 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
           {demos.map((demo) => {
             const styles = accentStyles[demo.accent];
             const Icon = demo.icon;
