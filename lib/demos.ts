@@ -13,6 +13,7 @@ import {
   Palette,
   FileUser,
   Mic,
+  Braces,
   type LucideIcon,
 } from "lucide-react";
 
@@ -227,6 +228,18 @@ export const demos: Demo[] = [
     icon: Mic,
     accent: "fuchsia",
     tags: ["MediaRecorder", "Whisper", "streamText"],
+  },
+  {
+    series: "B",
+    href: "/json",
+    title: "AI JSON Visualiser",
+    episode: "Ep 7",
+    description:
+      "Paste any API response. AI maps the structure, explains every field with semantic types, and generates a TypeScript interface you can copy.",
+    hint: "Hit Analyse on the sample JSON — IDs, timestamps, amounts, and nested objects included",
+    icon: Braces,
+    accent: "fuchsia",
+    tags: ["generateObject", "Zod", "TypeScript"],
   },
 ];
 
