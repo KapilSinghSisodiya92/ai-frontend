@@ -7,6 +7,7 @@ import {
   ImageIcon,
   Keyboard,
   Globe,
+  Code2,
   type LucideIcon,
 } from "lucide-react";
 
@@ -17,7 +18,7 @@ export type Demo = {
   description: string;
   hint: string;
   icon: LucideIcon;
-  accent: "amber" | "blue" | "violet" | "emerald" | "rose" | "cyan" | "indigo" | "teal";
+  accent: "amber" | "blue" | "violet" | "emerald" | "rose" | "cyan" | "indigo" | "teal" | "orange";
   tags: string[];
 };
 
@@ -87,6 +88,17 @@ export const demos: Demo[] = [
     icon: Keyboard,
     accent: "indigo",
     tags: ["useCompletion", "Range API", "Shortcut"],
+  },
+  {
+    href: "/review",
+    title: "AI Code Reviewer",
+    episode: "Series A · Ep 7",
+    description:
+      "Paste a function and get a structured review — severity score, line-referenced issues, and refactored code via generateObject.",
+    hint: "Hit Review on the sample code — SQL injection and XSS included",
+    icon: Code2,
+    accent: "orange",
+    tags: ["generateObject", "Zod", "Structured"],
   },
   {
     href: "/ask",
@@ -170,6 +182,13 @@ export const accentStyles: Record<
     text: "text-teal-400",
     glow: "group-hover:shadow-teal-500/10",
     iconBg: "bg-teal-500/10",
+  },
+  orange: {
+    border: "border-orange-500/20 hover:border-orange-500/40",
+    bg: "bg-orange-500/5",
+    text: "text-orange-400",
+    glow: "group-hover:shadow-orange-500/10",
+    iconBg: "bg-orange-500/10",
   },
 };
 
