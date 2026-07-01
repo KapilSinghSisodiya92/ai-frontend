@@ -34,9 +34,7 @@ function SeriesSection({ series }: { series: "A" | "B" }) {
       </div>
 
       <div
-        className={`grid gap-5 grid-cols-1 md:grid-cols-2 ${
-          isSeriesB ? "xl:grid-cols-2" : "xl:grid-cols-3"
-        }`}
+        className="grid gap-5 grid-cols-1 md:grid-cols-2 xl:grid-cols-3"
       >
         {demos.map((demo) => (
           <DemoCard key={demo.href} demo={demo} />
