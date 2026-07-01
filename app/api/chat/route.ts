@@ -11,6 +11,7 @@ Available demos:
 - Streaming Autocomplete (/complete) — ghost-text suggestions with Tab to accept
 - AI Form Validation (/validate) — Zod syntax checks plus AI semantic validation
 - AI Alt-Text Generator (/alt-text) — WCAG-compliant alt text from image uploads via vision
+- AI Text Rewriter (/rewrite) — Cmd+Shift+R to rewrite selected text with AI
 - AI Canvas Architect (/canvas) — describe a UI in plain English and see it render live
 
 Stack: Next.js 15, TypeScript, Tailwind CSS, Vercel AI SDK v6, OpenAI.
