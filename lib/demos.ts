@@ -14,6 +14,7 @@ import {
   FileUser,
   Mic,
   Braces,
+  Share2,
   type LucideIcon,
 } from "lucide-react";
 
@@ -240,6 +241,18 @@ export const demos: Demo[] = [
     icon: Braces,
     accent: "fuchsia",
     tags: ["generateObject", "Zod", "TypeScript"],
+  },
+  {
+    series: "B",
+    href: "/social",
+    title: "Social Post Rewriter",
+    episode: "Ep 8",
+    description:
+      "Write once, publish everywhere. Three parallel generateText calls rewrite your post for Twitter, LinkedIn, and Instagram — all at once.",
+    hint: "Hit Rewrite for all platforms on the sample launch post",
+    icon: Share2,
+    accent: "fuchsia",
+    tags: ["generateText", "Promise.all", "Parallel"],
   },
 ];
 
