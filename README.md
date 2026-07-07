@@ -1,6 +1,6 @@
 AI Canvas Architect Frontend 🎨⚡
 
-A state-of-the-art Generative UI Mockup Canvas built with Next.js, React, Tailwind CSS, and the modern Vercel AI SDK v6.
+A state-of-the-art Generative UI Mockup Canvas built with Next.js, React, Tailwind CSS, and the modern Vercel AI SDK v6
 
 This application bridges the gap between natural language prompts and functional software mockups. Instead of conversing via standard chat bubbles, users describe interfaces, and an LLM streams dynamic schema blueprints to the client. The frontend parses this data structure in real-time, mapping structured JSON blocks directly into interactive, beautifully styled Tailwind components on an adjacent designer canvas.
 
