@@ -165,7 +165,17 @@ export function ResumeScreener() {
         method: "POST",
         body: formData,
       });
-      const data = await res.json();
+      const raw = await res.text();
+      let data: Candidate & { error?: string };
+      try {
+        data = JSON.parse(raw);
+      } catch {
+        throw new Error(
+          res.ok
+            ? "Invalid response from server"
+            : `Server error (${res.status}). Redeploy may be required.`
+        );
+      }
       if (!res.ok) throw new Error(data.error ?? "Screening failed");
       setCandidate(data);
     } catch (err) {
