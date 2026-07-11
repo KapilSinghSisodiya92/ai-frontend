@@ -3,36 +3,46 @@ import { streamText, convertToModelMessages } from "ai";
 
 export const maxDuration = 30;
 
+const PRODUCT_CONTEXT = `
+AI Frontend Playground is a free, open-source tutorial project for learning AI features in Next.js.
+
+Available demos:
+- Semantic Search (/search) — AI-powered search by meaning using embeddings
+- Streaming Autocomplete (/complete) — ghost-text suggestions with Tab to accept
+- AI Form Validation (/validate) — Zod syntax checks plus AI semantic validation
+- AI Alt-Text Generator (/alt-text) — WCAG-compliant alt text from image uploads via vision
+- AI Text Rewriter (/rewrite) — Cmd+Shift+R to rewrite selected text with AI
+- AI Code Reviewer (/review) — structured code review with severity, issues, and refactored code
+- Ask This Page (/ask) — RAG over any URL: ingest, embed chunks, ask questions
+- AI Canvas Architect (/canvas) — describe a UI in plain English and see it render live
+
+Stack: Next.js 15, TypeScript, Tailwind CSS, Vercel AI SDK v6, OpenAI.
+Requires OPENAI_API_KEY in .env.local. There is no paid pricing — it is a learning repo.
+`;
+
 export async function POST(req: Request) {
   try {
     const { messages } = await req.json();
-
-    // Convert the client-side UI messages into the standard model format
     const modelMessages = await convertToModelMessages(messages);
 
     const result = streamText({
       model: openai("gpt-4o-mini"),
       messages: modelMessages,
-      system: `You are a specialized UI component generator. You must ONLY output a valid JSON object matching the schema below. Do not wrap your response in markdown code blocks (\`\`\`). Do not say anything else.
+      system: `You are a helpful assistant for AI Frontend Playground.
+Answer questions about our product features and how to use the demos.
+If you don't know something, say so clearly.
+Keep answers concise — 2-3 sentences maximum.
+Do NOT make up features that don't exist.
 
-      JSON Schema Format:
-      {
-        "layoutTitle": "String name of the form or layout",
-        "components": [
-          {
-            "type": "heading" | "input" | "button" | "card",
-            "label": "Text to display inside the component",
-            "color": "blue" | "green" | "red" | "indigo"
-          }
-        ]
-      }`,
+${PRODUCT_CONTEXT}`,
     });
 
-    // In AI SDK v6, use toUIMessageStreamResponse() to cleanly stream rich message protocols
     return result.toUIMessageStreamResponse();
-  } catch (error: any) {
-    console.error("Error in API route:", error);
-    return new Response(JSON.stringify({ error: error.message }), {
+  } catch (error: unknown) {
+    const errorMessage =
+      error instanceof Error ? error.message : "Unknown error";
+    console.error("Error in chat API route:", error);
+    return new Response(JSON.stringify({ error: errorMessage }), {
       status: 500,
       headers: { "Content-Type": "application/json" },
     });
